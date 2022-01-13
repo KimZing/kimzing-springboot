@@ -1,0 +1,11 @@
+# 数据基础设施相关配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///springboot?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: KimZing123456
+mybatis:
+  configuration:
+    # 开启下划线转驼峰标志
+    map-underscore-to-camel-case: true

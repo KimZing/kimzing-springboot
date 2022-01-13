@@ -1,0 +1,85 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'com.kimzing'
+version '1.0.0-SNAPSHOT'
+description = "封装SpringBoot开发中常用的功能，抽象为基础能力，通过简单的配置即可实现相应功能"
+sourceCompatibility = '1.8'
+
+dependencies {
+    implementation 'com.kimzing:kimzing-utils:1.0.0-SNAPSHOT'
+    compileOnly 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.springframework.boot:spring-boot-starter-webflux'
+    compileOnly 'org.springframework.boot:spring-boot-starter-aop'
+    compileOnly 'org.springframework.boot:spring-boot-starter-validation'
+    compileOnly 'com.xuxueli:xxl-job-core:2.2.0'
+    compileOnly 'org.projectlombok:lombok'
+    compileOnly 'com.baomidou:mybatis-plus-boot-starter:3.1.2'
+    compileOnly 'com.github.xiaoymin:knife4j-spring-boot-starter:2.0.4'
+    compileOnly 'org.apache.dubbo:dubbo:2.7.6'
+    compileOnly 'org.redisson:redisson-spring-boot-starter:3.13.1'
+    compileOnly 'com.alibaba.csp:sentinel-spring-webmvc-adapter:1.7.2'
+    compileOnly 'io.minio:minio:7.1.0'
+    compileOnly 'org.springframework.boot:spring-boot-starter-undertow'
+
+
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven {
+        allowInsecureProtocol = true
+        url 'http://mvn.kimzing.com/repository/maven-public/'
+    }
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
+}
+
+//打包源码
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            //指定group/artifact/version信息，可以不填。默认使用项目group/name/version作为groupId/artifactId/version
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+            //如果是war包填写components.web，如果是jar包填写components.java
+            from components.java
+
+            //配置上传源码
+            artifact sourceJar {
+                classifier "src"
+            }
+
+        }
+    }
+    repositories {
+        maven {
+            //指定要上传的maven私服仓库
+            allowInsecureProtocol = true
+            url = "http://mvn.kimzing.com/repository/maven-snapshots/"
+            //认证用户和密码
+            credentials {
+                username = 'kimzing'
+                password = 'KimZing123456'
+            }
+        }
+    }
+}

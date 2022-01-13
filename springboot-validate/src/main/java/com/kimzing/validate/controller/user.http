@@ -1,0 +1,20 @@
+### 查询用户  缺失用户名
+GET http://localhost:8080/user/name
+
+### 查询用户  用户名长度
+GET http://localhost:8080/user/name?name=abcdefghijk
+
+### 查询用户  年龄范围全部错误
+GET http://localhost:8080/user/age?ageFrom=-1&ageTo=180
+
+### 查询用户  年龄起始范围错误
+GET http://localhost:8080/user/age?ageFrom=-1&ageTo=24
+
+### 查询用户 邮箱格式错误
+GET http://localhost:8080/user/email?email=abc
+
+
+### 查询用户 性别错误
+GET http://localhost:8080/user/gender?gender=boy
+
+###

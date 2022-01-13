@@ -1,0 +1,6 @@
+rootProject.name = 'kimzing-springboot'
+include 'kimzing-springboot-starter'
+include 'kimzing-springboot-starter-test'
+include 'springboot-mybatis'
+include 'springboot-restful'
+include 'springboot-validate'
