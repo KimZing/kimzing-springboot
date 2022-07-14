@@ -1,0 +1,33 @@
+{
+  "class": "com.kimzing.test.service.impl.UserService",
+  "bean": "userService",
+  "mocks": [
+    {
+      "method": "saveUser",
+      "parameters": [],
+      "return": {
+        "name": "kimjson",
+        "age": 22,
+        "sex": "MAM"
+      }
+    },
+    {
+      "method": "delete",
+      "parameters": [],
+      "return": {
+        "name": "kimdelete",
+        "age": 80,
+        "sex": "MMM"
+      }
+    },
+    {
+      "method": "update",
+      "parameters": [],
+      "return": {
+        "name": "updateUser",
+        "age": 28,
+        "sex": "WOMAN"
+      }
+    }
+  ]
+}
