@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 @Component
 @RabbitListener(queues = "BASIC_QUEUE")
-public class RabbitConsumer {
+public class BasicConsumer {
 
     @RabbitHandler
     public void process(String msg, Channel channel, Message message) throws IOException {

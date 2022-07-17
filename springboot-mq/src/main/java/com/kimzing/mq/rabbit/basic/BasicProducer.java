@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @RequestMapping("/rabbit/basic")
 @RestController
-public class RabbitProducer {
+public class BasicProducer {
 
     @Resource
     RabbitTemplate rabbitTemplate;
