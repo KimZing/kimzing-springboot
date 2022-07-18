@@ -1,7 +1,7 @@
 package com.kimzing.test.mock;
 
+import com.kimzing.test.service.UserService;
 import com.kimzing.test.service.domain.User;
-import com.kimzing.test.service.impl.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -34,7 +34,7 @@ public class MockTests {
 
         // ===============方法链路============
         // 当为void方法时，啥都不做的方法
-        doNothing().when(userService).delete();
+        // doNothing().when(userService).delete();
     }
 
     @Test()

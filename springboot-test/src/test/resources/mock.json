@@ -1,5 +1,5 @@
 {
-  "class": "com.kimzing.test.service.impl.UserService",
+  "class": "com.kimzing.test.service.UserService",
   "bean": "userService",
   "mocks": [
     {

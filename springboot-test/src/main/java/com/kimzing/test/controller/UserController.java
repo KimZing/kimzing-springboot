@@ -1,7 +1,7 @@
 package com.kimzing.test.controller;
 
+import com.kimzing.test.service.UserService;
 import com.kimzing.test.service.domain.User;
-import com.kimzing.test.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
