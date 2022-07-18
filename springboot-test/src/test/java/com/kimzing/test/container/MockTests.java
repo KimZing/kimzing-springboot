@@ -1,8 +1,10 @@
 package com.kimzing.test.container;
 
+import com.kimzing.test.container.config.MockContextUtil;
 import com.kimzing.test.controller.UserController;
 import com.kimzing.test.service.domain.User;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
@@ -14,6 +16,7 @@ import javax.annotation.Resource;
  * @since 2022/7/14 11:14
  */
 @SpringBootTest
+@ImportAutoConfiguration(classes = MockContextUtil.class)
 public class MockTests {
 
     @Resource
@@ -22,6 +25,7 @@ public class MockTests {
     @Test()
     public void test() {
         User user = userController.saveUser("kimzing", 18, "MAN");
+
         System.out.println("添加用户" + user);
     }
 
