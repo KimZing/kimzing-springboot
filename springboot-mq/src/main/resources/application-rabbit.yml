@@ -9,3 +9,4 @@ spring:
       simple:
         # 手动ack
         acknowledge-mode: manual
+        prefetch: 2

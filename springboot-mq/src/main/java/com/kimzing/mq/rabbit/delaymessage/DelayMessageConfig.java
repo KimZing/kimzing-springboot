@@ -27,11 +27,11 @@ public class DelayMessageConfig {
     }
 
     /**
-     * 超时的订单存储队列
+     * 队列
      * @return
      */
     @Bean
-    public Queue messageQueue() {
+    public Queue delayQueue() {
         return new Queue("DELAY_QUEUE", true, false, false);
     }
 
@@ -41,7 +41,7 @@ public class DelayMessageConfig {
      */
     @Bean
     public Binding delayBinding() {
-        return BindingBuilder.bind(messageQueue()).to(delayExchange()).with("#").noargs();
+        return BindingBuilder.bind(delayQueue()).to(delayExchange()).with("#").noargs();
     }
 
 }
