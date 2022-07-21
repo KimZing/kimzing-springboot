@@ -1,7 +1,10 @@
 spring:
   rabbitmq:
+    # 单机的写法
     host: localhost
     port: 5672
+    # 集群的写法
+#    addresses: localhost:5672,localhost:5673,localhost:5674
     virtual-host: /
     username: guest
     password: guest
@@ -10,3 +13,7 @@ spring:
         # 手动ack
         acknowledge-mode: manual
         prefetch: 2
+    # 确认回调
+    publisher-confirm-type: correlated
+    # 入队失败回调
+    publisher-returns: true
