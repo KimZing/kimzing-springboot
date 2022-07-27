@@ -1,2 +1,2 @@
 ###
-GET localhost:8080/kafka/idempotence
+GET localhost:8080/kafka/basic

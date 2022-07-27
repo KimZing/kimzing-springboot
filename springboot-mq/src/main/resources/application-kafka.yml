@@ -4,7 +4,7 @@ spring:
     producer:
       # key和value的序列化方式
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.kimzing.mq.kafka.serializer.config.MyStringSerializer
       # 重试次数
       retries: 1
       # 服务端应何时ack， 0: partition leader收到还没落盘时就返回  1: leader接收到并且落盘后返回(默认) -1：leader和follower全部落盘后返回
@@ -13,6 +13,9 @@ spring:
       batch-size: 500
       # producer相关的属性
       properties:
+        # 定义拦截器
+        interceptor:
+          classes: com.kimzing.mq.kafka.interceptor.config.MyInterceptor
         # 即使消息没有到达指定数量，也会在超过5ms时进行发送
         linger:
           ms: 5
@@ -21,8 +24,8 @@ spring:
           idempotence: true
       # 生产者可用于缓冲等待发送到服务器的记录的总内存大小。
       buffer-memory: 33554432
-      # 当该值非空时，开启事物
-      transaction-id-prefix: transaction_
+      # 当该值非空时，开启事物（先关闭，实验事物时需要打开）
+#      transaction-id-prefix: transaction_
     consumer:
       # key和value的反序列化方式
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
