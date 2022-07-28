@@ -5,4 +5,7 @@ GET localhost:8080/kafka/partition/1
 GET localhost:8080/kafka/partition/2
 
 ###
+GET localhost:8080/kafka/partition/3
+
+###
 GET localhost:8080/kafka/partition/info

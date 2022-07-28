@@ -1,4 +1,4 @@
-package com.kimzing.mq.kafka.basic;
+package com.kimzing.mq.kafka.ack;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Component
 @RestController
-@RequestMapping("/kafka/basic")
-public class BasicProducer {
+@RequestMapping("/kafka/ack")
+public class ACKProducer {
     @Autowired
     private KafkaTemplate<String,Object> kafkaTemplate;
 
     @GetMapping
     public void send(){
-        kafkaTemplate.send("basic", "message from basic topic");
-        kafkaTemplate.send("basic2", "message from basic2 topic");
+        kafkaTemplate.send("ack", "message need ack");
     }
 
 }

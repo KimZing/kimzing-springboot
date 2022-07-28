@@ -4,7 +4,6 @@ import org.apache.kafka.common.PartitionInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +25,14 @@ public class PartitionProducer {
 
     @GetMapping("/2")
     public void send2(){
-        kafkaTemplate.send("partition", 2, "partition key", "message from partition1");
+        kafkaTemplate.send("partition", 2, "partition key", "message from partition2");
+    }
+
+    @GetMapping("/3")
+    public void send3(){
+        for (int i = 0; i < 100000; i++) {
+            kafkaTemplate.send("partition", 3, "partition key", "message from partition3 : " + i);
+        }
     }
 
 

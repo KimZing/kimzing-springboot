@@ -1,0 +1,2 @@
+### 需要关闭自动提交的功能，enable-auto-commit: false, 同时开启手动提交模式 listener.ack_mode: MANUAL
+GET localhost:8080/kafka/ack
