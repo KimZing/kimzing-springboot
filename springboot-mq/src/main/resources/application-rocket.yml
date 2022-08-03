@@ -1,0 +1,6 @@
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    # 指定消费者分组
+    group: kimzing-group
+    send-message-timeout: 3000

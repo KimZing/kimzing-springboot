@@ -1,0 +1,5 @@
+### 成功
+GET localhost:8080/rocketmq/transaction/success
+
+### 失败
+GET localhost:8080/rocketmq/transaction/fail
