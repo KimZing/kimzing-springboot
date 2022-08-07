@@ -1,0 +1,5 @@
+### 正常下线，发送disconnect
+GET http://localhost:8080/mqtt/lastwill/normal
+
+### 异常下线，不发送disconnect
+GET http://localhost:8080/mqtt/lastwill/force

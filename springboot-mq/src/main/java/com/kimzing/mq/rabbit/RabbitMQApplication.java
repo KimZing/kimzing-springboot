@@ -1,9 +1,8 @@
 package com.kimzing.mq.rabbit;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-@SpringBootApplication
+// @SpringBootApplication
 public class RabbitMQApplication {
 
     public static void main(String[] args) {

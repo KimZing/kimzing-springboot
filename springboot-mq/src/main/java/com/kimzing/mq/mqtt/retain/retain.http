@@ -1,0 +1,5 @@
+### 测试保留消息 相同实例
+GET http://localhost:8080/mqtt/retain/same
+
+### 测试保留消息 新实例
+GET http://localhost:8080/mqtt/retain/new

@@ -1,0 +1,2 @@
+### 测试订阅多个topic
+GET http://localhost:8080/mqtt/multitopic

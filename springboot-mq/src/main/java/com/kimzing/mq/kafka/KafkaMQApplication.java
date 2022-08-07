@@ -1,9 +1,8 @@
 package com.kimzing.mq.kafka;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-@SpringBootApplication
+// @SpringBootApplication
 public class KafkaMQApplication {
 
     public static void main(String[] args) {

@@ -1,0 +1,2 @@
+### 测试两个相同客户端id订阅消息的工作状态，只有后一个客户端工作正常
+GET http://localhost:8080/mqtt/clientId

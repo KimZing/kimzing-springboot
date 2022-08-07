@@ -1,9 +1,8 @@
 package com.kimzing.mq.rocket;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-@SpringBootApplication
+// @SpringBootApplication
 public class RocketMQApplication {
 
     public static void main(String[] args) {

@@ -1,0 +1,4 @@
+mqtt:
+  url: tcp://localhost:1883
+  username: guest
+  password: guest
