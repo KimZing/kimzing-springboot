@@ -32,25 +32,34 @@ public class RetainDemo {
         return client;
     }
 
+    MqttClient sameClient = null;
+    MqttClient publisher = null;
     @GetMapping("/same")
     public void testSameClient() throws MqttException, InterruptedException {
-        MqttClient subscribeClient = subscribe();
-        publish(); // 第一次测试时打开，发送一条保留消息
-        Thread.sleep(3);
+        if (sameClient == null) {
+            sameClient = subscribe();
+        }
+        if (publisher == null) {
+            publish(); // 第一次测试时打开，发送一条保留消息
+        }
+        Thread.sleep(1000);
         System.out.println("断开连接");
-        subscribeClient.disconnect();
-        subscribeClient.reconnect();
+        sameClient.disconnect();
+        sameClient.reconnect();
         System.out.println("重连成功");
+        Thread.sleep(1000);
         System.out.println("断开连接");
-        subscribeClient.disconnect();
-        subscribeClient.reconnect();
+        sameClient.disconnect();
+        sameClient.reconnect();
         System.out.println("重连成功");
     }
 
     @GetMapping("/new")
     public void testNewClient() throws MqttException, InterruptedException {
-         subscribe();
-        // publish(); // 第一次测试时打开，发送一条保留消息
+        subscribe();
+        if (publisher == null) {
+            publish(); // 第一次测试时打开，发送一条保留消息
+        }
         Thread.sleep(3);
         System.out.println("创建新的client");
         subscribe();

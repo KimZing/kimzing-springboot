@@ -19,8 +19,9 @@ public class CleanSession {
 
     private final MqttFactory mqttFactory;
 
-    public MqttClient createPublisher() throws MqttException {
-        return mqttFactory.createSyncClient("cleansession_pub", true, null, null);
+    private MqttClient publisher = null;
+    public void createPublisher() throws MqttException {
+        publisher =  mqttFactory.createSyncClient("cleansession_pub", true, null, null);
     }
 
     public void publish(MqttClient mqttClient) throws MqttException {
@@ -29,13 +30,14 @@ public class CleanSession {
         mqttClient.publish("cleansession1", "message with 2".getBytes(), 2, false);
     }
 
-    public MqttClient createSubscribe() throws MqttException {
-        return mqttFactory.createSyncClient("cleansession_sub", false, null, null);
+    private MqttClient subscriber1 = null;
+    public void createSubscribe(String clientId) throws MqttException {
+        subscriber1 =  mqttFactory.createSyncClient(clientId, false, null, null);
     }
 
     public void subscribe(MqttClient subscriber) throws MqttException {
         subscriber.subscribe("cleansession1", 1, (topic, message) -> {
-            System.out.println("收到消息:" + new String(message.getPayload()));
+            System.out.println(subscriber.getClientId() + " 收到消息:" + new String(message.getPayload()));
         });
     }
 
@@ -49,20 +51,26 @@ public class CleanSession {
 
     @GetMapping("/test")
     public void testOfflineMessage() throws MqttException, InterruptedException {
-        System.out.println("订阅者开始订阅");
-        MqttClient subscriber = createSubscribe();
-        subscribe(subscriber);
+            if (subscriber1 == null) {
+                createSubscribe("cleansession_sub1");
+                System.out.println("订阅者1开始订阅");
+                subscribe(subscriber1);
+            }
 
-        System.out.println("发布者发布消息");
-        MqttClient publisher = createPublisher();
-        publish(publisher);
-        Thread.sleep(1000);
+            if (publisher == null) {
+                createPublisher();
+                System.out.println("发布者发布消息");
+                publish(publisher);
+                Thread.sleep(1000);
+            }
 
-        System.out.println("订阅者离线");
-        offline(subscriber);
-        System.out.println("发布者发布消息");
-        publish(publisher);
-        Thread.sleep(10000);
-        online(subscriber);
+            System.out.println("订阅者1离线");
+            offline(subscriber1);
+            System.out.println("发布者发布消息");
+            publish(publisher);
+            Thread.sleep(5000);
+            System.out.println("订阅者1上线");
+            online(subscriber1);
+            System.out.println(String.format("===============测试结束"));
     }
 }
