@@ -2,6 +2,7 @@ package com.kimzing.redis.base.string;
 
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
+import org.redisson.client.codec.StringCodec;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,7 @@ public class CacheDemo {
     @GetMapping("/test/usecache")
     public String testCache() {
         long start = System.currentTimeMillis();
-        RBucket<String> bucket = redissonClient.getBucket("base:cache");
+        RBucket<String> bucket = redissonClient.getBucket("base:cache", StringCodec.INSTANCE);
         String cache = bucket.get();
         if (cache != null) {
             System.out.println("耗时:" + (System.currentTimeMillis() - start));

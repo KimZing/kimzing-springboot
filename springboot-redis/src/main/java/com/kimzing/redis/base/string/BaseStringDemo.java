@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  */
 @RestController
 @RequestMapping("/base/string")
-public class BaseDemo {
+public class BaseStringDemo {
 
     @Resource
     RedissonClient redissonClient;
@@ -28,7 +28,7 @@ public class BaseDemo {
      * @param key
      * @param value
      */
-    public void setString(String key, String value) {
+    public void set(String key, String value) {
         RBucket<Object> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
         bucket.set(value, 1, TimeUnit.MINUTES);
     }
@@ -37,15 +37,15 @@ public class BaseDemo {
      * 获取值
      * @param key
      */
-    public String getString(String key) {
+    public String get(String key) {
         RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
         return bucket.get();
     }
 
     @GetMapping("/test")
     public void test(){
-        setString("base:string", "hello string");
-        System.out.println(getString("base:string"));
+        set("base:string", "hello string");
+        System.out.println(get("base:string"));
     }
 
 }
