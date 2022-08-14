@@ -1,9 +1,9 @@
 package com.kimzing.restful.service;
 
-import com.kimzing.utils.page.PageResult;
-import com.kimzing.utils.result.ApiResult;
-import com.kimzing.restful.domain.dto.UserDTO;
-import com.kimzing.restful.domain.dto.UserQueryDTO;
+import com.kimzing.restful.domain.Query;
+import com.kimzing.restful.domain.User;
+
+import java.util.List;
 
 /**
  * 用户模拟服务.
@@ -13,14 +13,14 @@ import com.kimzing.restful.domain.dto.UserQueryDTO;
  */
 public interface UserService {
 
-    void save(UserDTO userDTO);
+    void save(User user);
 
     void remove(Long id);
 
-    void update(UserDTO userDTO);
+    void update(User user);
 
-    UserDTO find(Long id);
+    User find(Long id);
 
-    PageResult list(UserQueryDTO userQuery);
+    List<User> list(Query userQuery);
 
 }

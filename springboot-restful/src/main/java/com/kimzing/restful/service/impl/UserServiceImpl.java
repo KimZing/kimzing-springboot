@@ -1,17 +1,11 @@
 package com.kimzing.restful.service.impl;
 
-import com.kimzing.utils.bean.BeanUtil;
-import com.kimzing.utils.page.PageResult;
-import com.kimzing.utils.result.ApiResult;
-import com.kimzing.restful.domain.dto.UserDTO;
-import com.kimzing.restful.domain.dto.UserQueryDTO;
-import com.kimzing.restful.domain.po.UserPO;
-import com.kimzing.restful.repository.UserRepository;
+import com.kimzing.restful.domain.Query;
+import com.kimzing.restful.domain.User;
 import com.kimzing.restful.service.UserService;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,38 +17,27 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Resource
-    UserRepository userRepository;
-
     @Override
-    public void save(UserDTO userDTO) {
-        UserPO userPO = BeanUtil.mapperBean(userDTO, UserPO.class);
-        userRepository.save(userPO);
+    public void save(User user) {
     }
 
     @Override
     public void remove(Long id) {
-        userRepository.remove(id);
     }
 
     @Override
-    public void update(UserDTO userDTO) {
-        UserPO userPO = BeanUtil.mapperBean(userDTO, UserPO.class);
-        userRepository.update(userPO);
+    public void update(User user) {
     }
 
     @Override
-    public UserDTO find(Long id) {
-        UserPO userPO = userRepository.find(id);
-        UserDTO userDTO = BeanUtil.mapperBean(userPO, UserDTO.class);
-        return userDTO;
+    public User find(Long id) {
+        User user = new User();
+        return user;
     }
 
     @Override
-    public PageResult<UserDTO> list(UserQueryDTO userQuery) {
-        PageResult pageResult = userRepository.list(userQuery.getPageNum(), userQuery.getPageSize());
-        List<UserDTO> userDTOList = BeanUtil.mapperList(pageResult.getList(), UserDTO.class);
-        pageResult.setList(userDTOList);
-        return pageResult;
+    public List<User> list(Query userQuery) {
+        List<User> userList = new ArrayList<>();
+        return userList;
     }
 }

@@ -1,6 +1,5 @@
 package com.kimzing.validate.controller;
 
-import com.kimzing.utils.result.ApiResult;
 import com.kimzing.validate.domain.dto.UserDTO;
 import com.kimzing.validate.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -25,34 +24,34 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/name")
-    public ApiResult getByName(@RequestParam(required = false) String name) {
-        return userService.getByName(name);
+    public void getByName(@RequestParam(required = false) String name) {
+        userService.getByName(name);
     }
 
     @GetMapping("/age")
-    public ApiResult getByAge(@RequestParam(required = false) Integer ageFrom, @RequestParam(required = false) Integer ageTo) {
-        return userService.getByAge(ageFrom, ageTo);
+    public void getByAge(@RequestParam(required = false) Integer ageFrom, @RequestParam(required = false) Integer ageTo) {
+        userService.getByAge(ageFrom, ageTo);
     }
 
     @GetMapping("/email")
-    public ApiResult getByEmail(@RequestParam(required = false) String email) {
-        return userService.getByEmail(email);
+    public void getByEmail(@RequestParam(required = false) String email) {
+        userService.getByEmail(email);
     }
 
     @GetMapping("/gender")
-    public ApiResult getByGender(@RequestParam(required = false) String gender) {
-        return userService.getByGender(gender);
+    public void getByGender(@RequestParam(required = false) String gender) {
+        userService.getByGender(gender);
     }
 
 
     @PostMapping
-    public ApiResult save(@RequestBody UserDTO userDTO) {
-        return userService.save(userDTO);
+    public void save(@RequestBody UserDTO userDTO) {
+        userService.save(userDTO);
     }
 
     @PutMapping
-    public ApiResult update(@RequestBody UserDTO userDTO) {
-        return userService.update(userDTO);
+    public void update(@RequestBody UserDTO userDTO) {
+        userService.update(userDTO);
     }
 
 }

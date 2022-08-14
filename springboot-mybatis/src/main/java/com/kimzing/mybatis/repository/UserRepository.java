@@ -1,6 +1,6 @@
 package com.kimzing.mybatis.repository;
 
-import com.kimzing.mybatis.domain.po.UserPO;
+import com.kimzing.mybatis.domain.User;
 import com.kimzing.mybatis.repository.impl.MySqlUserRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,23 +19,23 @@ public class UserRepository {
     @Resource
     MySqlUserRepository mySqlUserRepository;
 
-    public Integer save(UserPO userPO) {
-        return mySqlUserRepository.save(userPO);
+    public Integer save(User user) {
+        return mySqlUserRepository.save(user);
     }
 
     public void remove(Long id) {
         mySqlUserRepository.remove(id);
     }
 
-    public void update(UserPO userPO) {
-        mySqlUserRepository.update(userPO);
+    public void update(User user) {
+        mySqlUserRepository.update(user);
     }
 
-    public UserPO find(Long id) {
+    public User find(Long id) {
         return mySqlUserRepository.find(id);
     }
 
-    public List<UserPO> list() {
+    public List<User> list() {
         return mySqlUserRepository.list();
     }
 

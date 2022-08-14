@@ -1,8 +1,8 @@
 package com.kimzing.validate.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kimzing.utils.group.SaveValidGroup;
-import com.kimzing.utils.group.UpdateValidGroup;
+import com.kimzing.validate.config.group.SaveValidGroup;
+import com.kimzing.validate.config.group.UpdateValidGroup;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
@@ -20,8 +20,8 @@ import java.util.List;
 @Data
 public class UserDTO {
 
-    @Null(message = "1006", groups = SaveValidGroup.class)
-    @NotNull(message = "1007", groups = UpdateValidGroup.class)
+    @Null(message = "用户ID不为空", groups = SaveValidGroup.class)
+    @NotNull(message = "用户ID为空", groups = UpdateValidGroup.class)
     private Long id;
 
     /**

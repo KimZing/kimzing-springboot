@@ -1,11 +1,11 @@
 package com.kimzing.mybatis.controller;
 
-import com.kimzing.mybatis.domain.dto.UserDTO;
+import com.kimzing.mybatis.domain.User;
 import com.kimzing.mybatis.service.UserService;
-import com.kimzing.utils.result.ApiResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 模拟用户控制层.
@@ -21,32 +21,28 @@ public class UserController {
     UserService userService;
 
     @PostMapping
-    public ApiResult save(@RequestBody UserDTO userDTO) {
-        userService.save(userDTO);
-        return ApiResult.success();
+    public void save(@RequestBody User user) {
+        userService.save(user);
     }
 
     @DeleteMapping("/{id}")
-    public ApiResult remove(@PathVariable Long id) {
+    public void remove(@PathVariable Long id) {
         userService.remove(id);
-        return ApiResult.success();
     }
 
     @PutMapping("/{id}")
-    public ApiResult update(@RequestBody UserDTO userDTO, @PathVariable Long id) {
-        userService.update(userDTO.setId(id));
-        return ApiResult.success();
-
+    public void update(@RequestBody User user) {
+        userService.update(user);
     }
 
     @GetMapping("/{id}")
-    public ApiResult find(@PathVariable Long id) {
-        return ApiResult.success(userService.find(id));
+    public User find(@PathVariable Long id) {
+        return userService.find(id);
     }
 
     @GetMapping("/list")
-    public ApiResult list() {
-        return ApiResult.success(userService.list());
+    public List<User> list() {
+        return userService.list();
     }
 
 }

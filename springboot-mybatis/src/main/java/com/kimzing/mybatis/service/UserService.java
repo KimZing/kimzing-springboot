@@ -1,6 +1,6 @@
 package com.kimzing.mybatis.service;
 
-import com.kimzing.mybatis.domain.dto.UserDTO;
+import com.kimzing.mybatis.domain.User;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ import java.util.List;
  */
 public interface UserService {
 
-    void save(UserDTO userDTO);
+    void save(User userDTO);
 
     void remove(Long id);
 
-    void update(UserDTO userDTO);
+    void update(User user);
 
-    UserDTO find(Long id);
+    User find(Long id);
 
-    List<UserDTO> list();
+    List<User> list();
 
 }

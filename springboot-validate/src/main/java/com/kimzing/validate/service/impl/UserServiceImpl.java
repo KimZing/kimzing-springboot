@@ -1,6 +1,5 @@
 package com.kimzing.validate.service.impl;
 
-import com.kimzing.utils.result.ApiResult;
 import com.kimzing.validate.domain.dto.UserDTO;
 import com.kimzing.validate.service.UserService;
 import org.springframework.stereotype.Service;
@@ -15,33 +14,27 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public ApiResult getByName(String name) {
-        return ApiResult.success();
+    public void getByName(String name) {
     }
 
     @Override
-    public ApiResult getByAge(Integer ageFrom, Integer ageTo) {
-        return ApiResult.success();
+    public void getByAge(Integer ageFrom, Integer ageTo) {
     }
 
     @Override
-    public ApiResult getByEmail(String email) {
-        return ApiResult.success();
+    public void getByEmail(String email) {
     }
 
     @Override
-    public ApiResult getByGender(String gender) {
-        return ApiResult.success();
+    public void getByGender(String gender) {
     }
 
     @Override
-    public ApiResult save(UserDTO userDTO) {
-        return ApiResult.success();
+    public void save(UserDTO userDTO) {
     }
 
     @Override
-    public ApiResult update(UserDTO userDTO) {
-        return ApiResult.success();
+    public void update(UserDTO userDTO) {
     }
 
 }

@@ -1,8 +1,7 @@
 package com.kimzing.validate.service;
 
-import com.kimzing.utils.group.SaveValidGroup;
-import com.kimzing.utils.group.UpdateValidGroup;
-import com.kimzing.utils.result.ApiResult;
+import com.kimzing.validate.config.group.SaveValidGroup;
+import com.kimzing.validate.config.group.UpdateValidGroup;
 import com.kimzing.validate.config.valid.Gender;
 import com.kimzing.validate.domain.dto.UserDTO;
 import org.hibernate.validator.constraints.Length;
@@ -22,15 +21,15 @@ import javax.validation.constraints.NotBlank;
 @Validated
 public interface UserService {
 
-    ApiResult getByName(@NotBlank(message = "1001") @Length(min = 1, max = 8, message = "1002") String name);
+    void getByName(@NotBlank(message = "用户名不能为空") @Length(min = 1, max = 8, message = "用户名长度不符") String name);
 
-    ApiResult getByAge(@Min(value = 1, message = "1003") Integer ageFrom, @Max(value = 150, message = "1004") Integer ageTo);
+    void getByAge(@Min(value = 1, message = "年龄起始范围不正确") Integer ageFrom, @Max(value = 150, message = "年龄结束范围不正确") Integer ageTo);
 
-    ApiResult getByEmail(@Email(message = "1005") String email);
+    void getByEmail(@Email(message = "邮箱格式不正确") String email);
 
-    ApiResult save(@Validated(value = SaveValidGroup.class) UserDTO userDTO);
+    void save(@Validated(value = SaveValidGroup.class) UserDTO userDTO);
 
-    ApiResult update(@Validated(value = UpdateValidGroup.class) UserDTO userDTO);
+    void update(@Validated(value = UpdateValidGroup.class) UserDTO userDTO);
 
-    ApiResult getByGender(@Gender(message = "1008") String gender);
+    void getByGender(@Gender(message = "性别错误") String gender);
 }

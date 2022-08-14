@@ -10,17 +10,12 @@ sourceCompatibility = '1.8'
 
 repositories {
     maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-    maven {
-        allowInsecureProtocol = true
-        url 'http://mvn.kimzing.com/repository/maven-public/'
-    }
     mavenCentral()
 }
 
 dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    implementation 'com.kimzing:kimzing-utils:1.0.0-SNAPSHOT'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

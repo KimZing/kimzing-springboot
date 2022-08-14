@@ -1,6 +1,6 @@
 package com.kimzing.mybatis.repository.impl;
 
-import com.kimzing.mybatis.domain.po.UserPO;
+import com.kimzing.mybatis.domain.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 public interface MySqlUserRepository {
 
     @Insert("INSERT INTO `user`(username, password, age, gender) VALUES(#{username}, #{password}, #{age}, #{gender});")
-    Integer save(UserPO userPO);
+    Integer save(User user);
 
     @Delete("DELETE FROM `user` WHERE id = #{id}")
     void remove(Long id);
@@ -28,7 +28,7 @@ public interface MySqlUserRepository {
             "</set>" +
             "WHERE id = #{id}" +
             "</script>")
-    void update(UserPO userPO);
+    void update(User user);
 
     @Select("SELECT * FROM `user` WHERE id = #{id}")
     @Results({
@@ -38,10 +38,10 @@ public interface MySqlUserRepository {
                     many = @Many(select = "com.kimzing.mybatis.repository.CarRepository.findCarsByUserId")),
             @Result(property = "id", column = "id")
     })
-    UserPO find(Long id);
+    User find(Long id);
 
 
     @Select("SELECT * FROM `user`")
-    List<UserPO> list();
+    List<User> list();
 
 }
